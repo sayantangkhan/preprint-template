@@ -5,6 +5,7 @@
 \usepackage{tikz-cd}
 \usepackage{marginnote}
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathrsfs}
 \usepackage{bbm}
 \usepackage{hyperref}
 \hypersetup{
@@ -14,7 +15,30 @@
   citecolor   = blue %Colour of citations
 }
 
+% Bibliography related
+\usepackage[
+            hyperref=true,
+            url=false,
+            isbn=false,
+            backref=true,
+            style=alphabetic,
+            block=none
+]{biblatex}
+\addbibresource{references.bib}
+
+% To refer to theorems that appear later
+\newtheorem*{rep@theorem}{\rep@title}
+\newcommand{\newreptheorem}[2]{%
+\newenvironment{rep#1}[1]{%
+ \def\rep@title{#2 \ref{##1}}%
+ \begin{rep@theorem}}%
+ {\end{rep@theorem}}}
+
+% Only sections appear in TOC
+\setcounter{tocdepth}{1}
+
 \newtheorem{theorem}{Theorem}[section]
+\newreptheorem{theorem}{Theorem}
 \newtheorem*{untheorem}{Theorem}
 
 \newtheorem{lemma}[theorem]{Lemma}
@@ -28,7 +52,7 @@
 \newtheorem{example}[theorem]{Example}
 
 \theoremstyle{definition}
-\newtheorem*{question}{Question}
+\newtheorem{question}[theorem]{Question}
 
 \theoremstyle{remark}
 \newtheorem*{rem}{Remark}
@@ -42,7 +66,7 @@
   \manualtheoreminner
 }{\endmanualtheoreminner}
 
-\usepackage[top=2cm, bottom=2cm, inner=2cm, outer=2cm]{geometry}
+\usepackage[margin=1in]{geometry}
 
 \usepackage{enumerate}
 \usepackage{xcolor}
@@ -57,7 +81,7 @@
 
 \newcommand*{\incfig}[2][1]{%
     \def\svgscale{#1}
-    \import{./images/}{#2.pdf_tex}
+    \import{./}{#2.pdf_tex}
 }
 
 % To be uncommented if we need autorefnames
