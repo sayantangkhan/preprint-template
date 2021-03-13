@@ -6,8 +6,6 @@ clean:
 
 arxiv: build-pdf
 	mkdir arxiv-build;
-	cp main.tex mathpreamble.sty references.bib build/main.bbl arxiv-build/;
-	find . -maxdepth 1 -type f -name '*.pdf' -exec cp '{}' arxiv-build \;
-	find . -maxdepth 1 -type f -name '*.pdf_tex' -exec cp '{}' arxiv-build \;
+	cp -r main.tex mathpreamble.sty references.bib build/main.bbl images/ arxiv-build/;
 	tar -czf arxiv-submission.tar.gz -C arxiv-build .;
 	rm -rf arxiv-build
