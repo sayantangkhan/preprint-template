@@ -1,8 +1,14 @@
+filename = sample-output.pdf
+
 build-pdf:
 	latexmk main.tex
 
 clean:
 	find ./build/ -type f -not -name '*.pdf' -exec rm {} +
+
+web: build-pdf
+	cp ./build/main.pdf ./web/${filename}
+	echo "Link to latest <a href="${filename}">compiled pdf</a>." > ./web/index.html
 
 arxiv: build-pdf
 	mkdir arxiv-build;

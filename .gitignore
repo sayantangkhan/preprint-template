@@ -278,3 +278,4 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 /arxiv-submission.tar.gz
+web/*.pdf
