@@ -10,7 +10,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Compile LaTeX document
-        uses: sayantangkhan/latex-action@v3
+        uses: sayantangkhan/latex-action@v4
         with:
           root_file: main.tex
           post_compile: "make web"
