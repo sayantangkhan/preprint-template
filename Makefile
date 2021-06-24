@@ -7,9 +7,9 @@ clean:
 	find ./build/ -type f -not -name '*.pdf' -exec rm {} +
 	rm -rf ./web/
 
-web: build-pdf
+web:
 	mkdir ./web/
-	cp ./build/main.pdf ./web/${filename}
+	cp ./main.pdf ./web/${filename}
 	echo "Link to latest <a href="${filename}">compiled pdf</a>." > ./web/index.html
 
 arxiv: build-pdf
